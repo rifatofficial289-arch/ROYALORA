@@ -4,228 +4,417 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ROYALORA - Premium Fashion Store</title>
+<title>ROYALORA | Premium Fashion Store</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    background:#0b0b0b;
-    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#080808;
+    color:#fff;
 }
 
+/* =========================
+   COLORS
+========================= */
+
+:root{
+    --gold:#d4af37;
+    --gold2:#f5d76e;
+    --black:#080808;
+    --dark:#111;
+    --card:#151515;
+    --gray:#aaa;
+}
+
+/* =========================
+   HEADER
+========================= */
+
 header{
-    background:#050505;
-    padding:18px 7%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid #c9a227;
     position:sticky;
     top:0;
     z-index:1000;
+    background:rgba(5,5,5,.96);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(212,175,55,.35);
+    padding:15px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 .logo{
-    color:#d4af37;
-    font-size:25px;
-    font-weight:bold;
+    color:var(--gold);
+    font-size:26px;
+    font-weight:900;
+    letter-spacing:2px;
+    animation:logoGlow 2.5s infinite alternate;
 }
 
 .logo small{
     display:block;
-    font-size:9px;
-    letter-spacing:3px;
-    color:#aaa;
+    color:#999;
+    font-size:8px;
+    letter-spacing:4px;
+    margin-top:3px;
+}
+
+@keyframes logoGlow{
+    from{
+        text-shadow:0 0 5px rgba(212,175,55,.2);
+    }
+    to{
+        text-shadow:
+        0 0 8px rgba(212,175,55,.5),
+        0 0 20px rgba(212,175,55,.25);
+    }
+}
+
+nav{
+    display:flex;
+    gap:25px;
 }
 
 nav a{
     color:white;
     text-decoration:none;
-    margin:0 12px;
+    font-size:14px;
+    transition:.3s;
 }
 
-.cart-btn{
-    background:#d4af37;
-    color:#000;
-    border:0;
+nav a:hover{
+    color:var(--gold);
+}
+
+.cart-button{
+    border:1px solid var(--gold);
+    background:transparent;
+    color:var(--gold);
     padding:10px 15px;
     border-radius:25px;
-    font-weight:bold;
     cursor:pointer;
+    font-weight:bold;
 }
 
-/* HERO */
+.cart-button:hover{
+    background:var(--gold);
+    color:#000;
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
-    min-height:430px;
+    min-height:520px;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:30px;
+    padding:40px 20px;
+
     background:
-    linear-gradient(#0008,#0008),
-    url("https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1600&q=80")
+    linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.78)),
+    url("https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1800&q=85")
     center/cover;
+
+    position:relative;
+}
+
+.hero-content{
+    max-width:850px;
 }
 
 .hero h1{
-    font-size:48px;
-    color:#d4af37;
+    font-size:58px;
+    color:var(--gold);
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+.hero h2{
+    font-size:30px;
+    margin-bottom:15px;
 }
 
 .hero p{
-    font-size:20px;
-    margin:15px 0 25px;
-}
-
-.hero button{
-    padding:13px 25px;
-    border:0;
-    background:#d4af37;
-    border-radius:25px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-/* SECTION */
-
-section{
-    padding:50px 7%;
-}
-
-.title{
-    text-align:center;
+    color:#ccc;
+    font-size:17px;
     margin-bottom:30px;
 }
 
-.title h2{
-    color:#d4af37;
+.gold-btn{
+    background:linear-gradient(135deg,var(--gold),var(--gold2));
+    color:#000;
+    border:0;
+    padding:14px 28px;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
 }
 
-/* PRODUCTS */
+.gold-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 25px rgba(212,175,55,.3);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+    padding:70px 6%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title h2{
+    color:var(--gold);
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.section-title p{
+    color:#999;
+}
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.categories{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+}
+
+.category{
+    border:1px solid #444;
+    background:#111;
+    color:#fff;
+    padding:11px 20px;
+    border-radius:25px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.category:hover,
+.category.active{
+    background:var(--gold);
+    color:#000;
+    border-color:var(--gold);
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box{
+    max-width:600px;
+    margin:0 auto 30px;
+}
+
+.search-box input{
+    width:100%;
+    padding:15px 20px;
+    border-radius:30px;
+    border:1px solid #444;
+    background:#111;
+    color:white;
+    outline:none;
+}
+
+.search-box input:focus{
+    border-color:var(--gold);
+}
+
+/* =========================
+   PRODUCTS
+========================= */
 
 .products{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:20px;
+    gap:22px;
 }
 
 .product{
-    background:#151515;
+    background:linear-gradient(145deg,#151515,#0e0e0e);
     border:1px solid #292929;
-    border-radius:15px;
+    border-radius:16px;
     overflow:hidden;
-    transition:.3s;
+    transition:.35s;
 }
 
 .product:hover{
-    transform:translateY(-6px);
-    border-color:#d4af37;
+    transform:translateY(-8px);
+    border-color:var(--gold);
+    box-shadow:0 10px 35px rgba(212,175,55,.12);
 }
 
-.product img{
+.product-image{
+    height:280px;
+    position:relative;
+    overflow:hidden;
+}
+
+.product-image img{
     width:100%;
-    height:250px;
+    height:100%;
     object-fit:cover;
+    transition:.5s;
 }
 
-.info{
-    padding:15px;
+.product:hover img{
+    transform:scale(1.07);
 }
 
-.info h3{
+.badge{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:#111;
+    color:var(--gold);
+    border:1px solid var(--gold);
+    padding:6px 9px;
+    border-radius:15px;
+    font-size:11px;
+}
+
+.product-info{
+    padding:18px;
+}
+
+.product-info h3{
     margin-bottom:8px;
 }
 
 .rating{
-    color:#d4af37;
-    margin-bottom:8px;
+    color:var(--gold);
+    margin-bottom:10px;
 }
 
 .price{
-    font-size:20px;
+    font-size:21px;
     font-weight:bold;
 }
 
-.old{
+.old-price{
     color:#777;
     text-decoration:line-through;
-    font-size:14px;
-    margin-left:6px;
+    font-size:13px;
+    margin-left:7px;
 }
 
 .discount{
     color:#00d084;
-    font-size:13px;
-    margin-left:6px;
+    font-size:12px;
+    margin-left:5px;
 }
 
-.add{
+.add-cart{
     width:100%;
-    margin-top:12px;
-    padding:11px;
-    background:#d4af37;
+    margin-top:14px;
+    padding:12px;
+    background:var(--gold);
+    color:#000;
     border:0;
     border-radius:8px;
-    font-weight:bold;
     cursor:pointer;
+    font-weight:bold;
 }
 
-/* COLLECTION */
+.add-cart:hover{
+    background:var(--gold2);
+}
+
+/* =========================
+   COLLECTIONS
+========================= */
 
 .collections{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:20px;
+    gap:25px;
 }
 
 .collection{
-    height:250px;
-    border-radius:15px;
-    overflow:hidden;
+    height:300px;
     position:relative;
+    overflow:hidden;
+    border-radius:18px;
+    border:1px solid #333;
 }
 
 .collection img{
     width:100%;
     height:100%;
     object-fit:cover;
+    transition:.5s;
 }
 
-.collection div{
+.collection:hover img{
+    transform:scale(1.08);
+}
+
+.collection-overlay{
     position:absolute;
     inset:0;
-    background:#0008;
     display:flex;
-    align-items:center;
     justify-content:center;
-    font-size:30px;
-    font-weight:bold;
-    color:#d4af37;
+    align-items:center;
+    background:rgba(0,0,0,.45);
 }
 
-/* CART */
+.collection-overlay h3{
+    color:var(--gold);
+    font-size:30px;
+}
+
+/* =========================
+   CART
+========================= */
+
+.cart-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    z-index:1500;
+    display:none;
+}
+
+.cart-overlay.active{
+    display:block;
+}
 
 .cart{
     position:fixed;
-    right:-420px;
     top:0;
-    width:400px;
-    max-width:90%;
+    right:-450px;
+    width:430px;
+    max-width:92%;
     height:100vh;
-    background:#111;
+    background:#101010;
     z-index:2000;
+    transition:.4s;
     padding:25px;
-    transition:.3s;
-    box-shadow:-5px 0 20px #000;
     overflow-y:auto;
+    border-left:1px solid var(--gold);
 }
 
 .cart.active{
@@ -236,30 +425,32 @@ section{
     display:flex;
     justify-content:space-between;
     align-items:center;
+    padding-bottom:18px;
     border-bottom:1px solid #333;
-    padding-bottom:15px;
-    margin-bottom:20px;
+}
+
+.cart-header h2{
+    color:var(--gold);
 }
 
 .close{
     background:none;
     border:0;
     color:white;
-    font-size:25px;
+    font-size:30px;
     cursor:pointer;
 }
 
 .cart-item{
     display:flex;
-    gap:10px;
-    margin-bottom:15px;
-    padding-bottom:15px;
-    border-bottom:1px solid #333;
+    gap:12px;
+    padding:18px 0;
+    border-bottom:1px solid #292929;
 }
 
 .cart-item img{
     width:70px;
-    height:70px;
+    height:80px;
     object-fit:cover;
     border-radius:8px;
 }
@@ -268,101 +459,197 @@ section{
     flex:1;
 }
 
+.cart-item-info h4{
+    margin-bottom:6px;
+}
+
 .qty{
     margin-top:8px;
 }
 
 .qty button{
-    width:25px;
-    height:25px;
+    width:26px;
+    height:26px;
     border:0;
-    background:#d4af37;
+    background:var(--gold);
     cursor:pointer;
 }
 
 .remove{
-    background:#b00020;
-    color:white;
+    margin-top:7px;
     border:0;
-    padding:5px 8px;
+    background:#a00020;
+    color:#fff;
+    padding:5px 9px;
     border-radius:5px;
     cursor:pointer;
-    margin-top:5px;
 }
 
-.total{
-    border-top:1px solid #333;
-    margin-top:20px;
-    padding-top:20px;
+.cart-total{
+    padding:20px 0;
     font-size:22px;
-    color:#d4af37;
+    color:var(--gold);
 }
 
-.checkout{
-    width:100%;
+/* =========================
+   ORDER FORM
+========================= */
+
+.order-form{
+    display:none;
     margin-top:15px;
-    padding:13px;
-    background:#d4af37;
-    border:0;
-    border-radius:8px;
-    font-weight:bold;
+    border-top:1px solid #333;
+    padding-top:20px;
+}
+
+.order-form.active{
+    display:block;
+}
+
+.order-form h3{
+    color:var(--gold);
+    margin-bottom:15px;
+}
+
+.order-form input,
+.order-form textarea,
+.order-form select{
+    width:100%;
+    margin-bottom:12px;
+    padding:12px;
+    background:#181818;
+    border:1px solid #333;
+    color:#fff;
+    border-radius:7px;
+    outline:none;
+}
+
+.order-form input:focus,
+.order-form textarea:focus,
+.order-form select:focus{
+    border-color:var(--gold);
+}
+
+.payment-box{
+    border:1px solid #333;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.payment-box label{
+    display:block;
+    margin:8px 0;
     cursor:pointer;
 }
 
-/* FOOTER */
+.payment-info{
+    display:none;
+    margin-top:10px;
+    padding:10px;
+    background:#191919;
+    border-radius:7px;
+    color:#ccc;
+    font-size:13px;
+}
+
+.payment-info.show{
+    display:block;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%) translateY(100px);
+    background:#d4af37;
+    color:#000;
+    padding:13px 20px;
+    border-radius:25px;
+    font-weight:bold;
+    z-index:5000;
+    opacity:0;
+    transition:.4s;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
     background:#050505;
+    padding:45px 6%;
     text-align:center;
-    padding:35px;
     border-top:1px solid #222;
 }
 
-footer span{
-    color:#d4af37;
+footer h2{
+    color:var(--gold);
+    margin-bottom:10px;
 }
 
-/* MOBILE */
+footer p{
+    color:#888;
+    margin:5px;
+}
 
-@media(max-width:800px){
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
 
     nav{
         display:none;
-    }
-
-    .hero h1{
-        font-size:35px;
     }
 
     .products{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .product img{
-        height:200px;
+    .hero h1{
+        font-size:42px;
+    }
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:50px 5%;
+    }
+
+    .products{
+        grid-template-columns:1fr;
     }
 
     .collections{
         grid-template-columns:1fr;
     }
 
-    .cart{
-        width:360px;
-    }
-}
-
-@media(max-width:450px){
-
-    .products{
-        grid-template-columns:1fr;
-    }
-
-    .product img{
-        height:300px;
-    }
-
     .hero{
-        min-height:380px;
+        min-height:450px;
+    }
+
+    .hero h1{
+        font-size:35px;
+    }
+
+    .hero h2{
+        font-size:23px;
+    }
+
+    .cart{
+        width:100%;
+        max-width:100%;
     }
 }
 </style>
@@ -370,7 +657,9 @@ footer span{
 
 <body>
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -380,55 +669,134 @@ footer span{
 </div>
 
 <nav>
-<a href="#">Home</a>
+<a href="#home">Home</a>
 <a href="#products">Products</a>
 <a href="#collections">Collections</a>
 </nav>
 
-<button class="cart-btn" onclick="openCart()">
+<button class="cart-button" onclick="openCart()">
 🛒 Cart (<span id="cartCount">0</span>)
 </button>
 
 </header>
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
-<div class="hero">
+<section class="hero" id="home">
 
-<div>
-<h1>WELCOME TO ROYALORA</h1>
+<div class="hero-content">
 
-<p>Discover Your Royal Style</p>
+<h1>ROYALORA</h1>
 
-<button onclick="document.getElementById('products').scrollIntoView()">
+<h2>Discover Your Royal Style</h2>
+
+<p>
+Premium fashion for those who choose elegance,
+quality and confidence.
+</p>
+
+<button class="gold-btn"
+onclick="document.getElementById('products').scrollIntoView()">
 SHOP COLLECTION →
 </button>
 
 </div>
 
+</section>
+
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<section>
+
+<div class="section-title">
+<h2>SHOP BY CATEGORY</h2>
+<p>Find your perfect style</p>
 </div>
 
+<div class="categories">
 
-<!-- PRODUCTS -->
+<button class="category active"
+onclick="filterProducts('All',this)">
+All
+</button>
+
+<button class="category"
+onclick="filterProducts('Men',this)">
+Men
+</button>
+
+<button class="category"
+onclick="filterProducts('Women',this)">
+Women
+</button>
+
+<button class="category"
+onclick="filterProducts('T-Shirt',this)">
+T-Shirts
+</button>
+
+<button class="category"
+onclick="filterProducts('Shirt',this)">
+Shirts
+</button>
+
+<button class="category"
+onclick="filterProducts('Hoodie',this)">
+Hoodies
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     PRODUCTS
+========================= -->
 
 <section id="products">
 
-<div class="title">
+<div class="section-title">
 <h2>✨ FEATURED PRODUCTS</h2>
-<p>Premium Fashion Collection</p>
+<p>Premium collection from ROYALORA</p>
 </div>
 
-<div class="products">
+
+<div class="search-box">
+
+<input
+type="text"
+id="search"
+placeholder="🔍 Search products..."
+onkeyup="searchProducts()">
+
+</div>
+
+
+<div class="products" id="productGrid">
 
 
 <!-- PRODUCT 1 -->
 
-<div class="product">
+<div class="product"
+data-name="Premium Black T-Shirt"
+data-category="T-Shirt Men">
 
-<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80">
+<div class="product-image">
 
-<div class="info">
+<span class="badge">20% OFF</span>
+
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85">
+
+</div>
+
+<div class="product-info">
 
 <h3>Premium Black T-Shirt</h3>
 
@@ -436,12 +804,16 @@ SHOP COLLECTION →
 
 <div class="price">
 ৳799
-<span class="old">৳999</span>
+<span class="old-price">৳999</span>
 <span class="discount">-20%</span>
 </div>
 
-<button class="add"
-onclick="addToCart('Premium Black T-Shirt',799,'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80')">
+<button class="add-cart"
+onclick="addToCart(
+'Premium Black T-Shirt',
+799,
+'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85'
+)">
 🛒 ADD TO CART
 </button>
 
@@ -451,11 +823,19 @@ onclick="addToCart('Premium Black T-Shirt',799,'https://images.unsplash.com/phot
 
 <!-- PRODUCT 2 -->
 
-<div class="product">
+<div class="product"
+data-name="Classic White Shirt"
+data-category="Shirt Men">
 
-<img src="https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=700&q=80">
+<div class="product-image">
 
-<div class="info">
+<span class="badge">15% OFF</span>
+
+<img src="https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=800&q=85">
+
+</div>
+
+<div class="product-info">
 
 <h3>Classic White Shirt</h3>
 
@@ -463,12 +843,16 @@ onclick="addToCart('Premium Black T-Shirt',799,'https://images.unsplash.com/phot
 
 <div class="price">
 ৳1,299
-<span class="old">৳1,599</span>
+<span class="old-price">৳1,599</span>
 <span class="discount">-15%</span>
 </div>
 
-<button class="add"
-onclick="addToCart('Classic White Shirt',1299,'https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=700&q=80')">
+<button class="add-cart"
+onclick="addToCart(
+'Classic White Shirt',
+1299,
+'https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=800&q=85'
+)">
 🛒 ADD TO CART
 </button>
 
@@ -478,11 +862,19 @@ onclick="addToCart('Classic White Shirt',1299,'https://images.unsplash.com/photo
 
 <!-- PRODUCT 3 -->
 
-<div class="product">
+<div class="product"
+data-name="Women's Fashion Dress"
+data-category="Women">
 
-<img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80">
+<div class="product-image">
 
-<div class="info">
+<span class="badge">18% OFF</span>
+
+<img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=800&q=85">
+
+</div>
+
+<div class="product-info">
 
 <h3>Women's Fashion Dress</h3>
 
@@ -490,12 +882,16 @@ onclick="addToCart('Classic White Shirt',1299,'https://images.unsplash.com/photo
 
 <div class="price">
 ৳1,499
-<span class="old">৳1,799</span>
+<span class="old-price">৳1,799</span>
 <span class="discount">-18%</span>
 </div>
 
-<button class="add"
-onclick="addToCart('Women Fashion Dress',1499,'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80')">
+<button class="add-cart"
+onclick="addToCart(
+'Women Fashion Dress',
+1499,
+'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=800&q=85'
+)">
 🛒 ADD TO CART
 </button>
 
@@ -505,11 +901,19 @@ onclick="addToCart('Women Fashion Dress',1499,'https://images.unsplash.com/photo
 
 <!-- PRODUCT 4 -->
 
-<div class="product">
+<div class="product"
+data-name="Premium Hoodie"
+data-category="Hoodie Men">
 
-<img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=700&q=80">
+<div class="product-image">
 
-<div class="info">
+<span class="badge">25% OFF</span>
+
+<img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=85">
+
+</div>
+
+<div class="product-info">
 
 <h3>Premium Hoodie</h3>
 
@@ -517,12 +921,16 @@ onclick="addToCart('Women Fashion Dress',1499,'https://images.unsplash.com/photo
 
 <div class="price">
 ৳1,199
-<span class="old">৳1,599</span>
+<span class="old-price">৳1,599</span>
 <span class="discount">-25%</span>
 </div>
 
-<button class="add"
-onclick="addToCart('Premium Hoodie',1199,'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=700&q=80')">
+<button class="add-cart"
+onclick="addToCart(
+'Premium Hoodie',
+1199,
+'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=85'
+)">
 🛒 ADD TO CART
 </button>
 
@@ -530,32 +938,40 @@ onclick="addToCart('Premium Hoodie',1199,'https://images.unsplash.com/photo-1556
 </div>
 
 </div>
+
 </section>
 
 
-<!-- COLLECTIONS -->
+<!-- =========================
+     COLLECTIONS
+========================= -->
 
 <section id="collections">
 
-<div class="title">
+<div class="section-title">
 <h2>ROYAL COLLECTIONS</h2>
+<p>Explore our premium collections</p>
 </div>
 
 <div class="collections">
 
 <div class="collection">
 
-<img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1000&q=80">
+<img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=1000&q=85">
 
-<div>MEN'S COLLECTION</div>
+<div class="collection-overlay">
+<h3>MEN'S COLLECTION</h3>
+</div>
 
 </div>
 
 <div class="collection">
 
-<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=80">
+<img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=85">
 
-<div>WOMEN'S COLLECTION</div>
+<div class="collection-overlay">
+<h3>WOMEN'S COLLECTION</h3>
+</div>
 
 </div>
 
@@ -564,48 +980,175 @@ onclick="addToCart('Premium Hoodie',1199,'https://images.unsplash.com/photo-1556
 </section>
 
 
-<!-- CART -->
+<!-- =========================
+     CART OVERLAY
+========================= -->
+
+<div class="cart-overlay"
+id="cartOverlay"
+onclick="closeCart()">
+</div>
+
+
+<!-- =========================
+     CART
+========================= -->
 
 <div class="cart" id="cart">
 
 <div class="cart-header">
 
-<h2>🛒 Your Cart</h2>
+<h2>🛒 YOUR CART</h2>
 
-<button class="close" onclick="closeCart()">×</button>
-
-</div>
-
-<div id="cartItems"></div>
-
-<div class="total">
-Total: ৳<span id="cartTotal">0</span>
-</div>
-
-<button class="checkout" onclick="checkout()">
-PROCEED TO ORDER
+<button class="close"
+onclick="closeCart()">
+×
 </button>
 
 </div>
 
 
-<!-- FOOTER -->
+<div id="cartItems"></div>
+
+
+<div class="cart-total">
+
+Total: ৳<span id="cartTotal">0</span>
+
+</div>
+
+
+<button class="gold-btn"
+style="width:100%"
+onclick="showOrderForm()">
+
+📝 PLACE ORDER
+
+</button>
+
+
+<!-- ORDER FORM -->
+
+<div class="order-form" id="orderForm">
+
+<h3>📦 CUSTOMER INFORMATION</h3>
+
+<input
+type="text"
+id="customerName"
+placeholder="Your Full Name">
+
+<input
+type="tel"
+id="customerPhone"
+placeholder="Phone Number">
+
+<textarea
+id="customerAddress"
+rows="3"
+placeholder="Full Delivery Address"></textarea>
+
+
+<div class="payment-box">
+
+<strong>💳 PAYMENT METHOD</strong>
+
+<label>
+<input
+type="radio"
+name="payment"
+value="Cash on Delivery"
+checked
+onclick="paymentChanged()">
+Cash on Delivery
+</label>
+
+<label>
+<input
+type="radio"
+name="payment"
+value="Rocket"
+onclick="paymentChanged()">
+Rocket
+</label>
+
+<label>
+<input
+type="radio"
+name="payment"
+value="Nagad"
+onclick="paymentChanged()">
+Nagad
+</label>
+
+
+<div id="paymentInfo"
+class="payment-info">
+
+Rocket/Nagad Number:
+<strong>01334779360</strong>
+
+<br><br>
+
+Send payment to the merchant number and keep your Transaction ID.
+
+</div>
+
+</div>
+
+
+<button
+class="gold-btn"
+style="width:100%"
+onclick="sendWhatsAppOrder()">
+
+📱 ORDER VIA WHATSAPP
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div class="toast" id="toast">
+Added to cart ✓
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-<p>© 2026 <span>ROYALORA</span> — Premium Fashion Store</p>
+<h2>👑 ROYALORA</h2>
 
-<p>Style • Quality • Royalty 👑</p>
+<p>Premium Fashion Store</p>
+
+<p>Style • Quality • Royalty</p>
+
+<p>© 2026 ROYALORA. All Rights Reserved.</p>
 
 </footer>
 
 
 <script>
 
+/* =================================
+   CART DATA
+================================= */
+
 let cart=[];
 
 
-/* ADD TO CART */
+/* =================================
+   ADD TO CART
+================================= */
 
 function addToCart(name,price,image){
 
@@ -628,18 +1171,20 @@ quantity:1
 
 updateCart();
 
-openCart();
+showToast("Added to cart ✓");
 
 }
 
 
-/* UPDATE CART */
+/* =================================
+   UPDATE CART
+================================= */
 
 function updateCart(){
 
-let container=document.getElementById("cartItems");
+let items=document.getElementById("cartItems");
 
-container.innerHTML="";
+items.innerHTML="";
 
 let total=0;
 let count=0;
@@ -647,9 +1192,10 @@ let count=0;
 cart.forEach((item,index)=>{
 
 total+=item.price*item.quantity;
+
 count+=item.quantity;
 
-container.innerHTML+=`
+items.innerHTML+=`
 
 <div class="cart-item">
 
@@ -657,9 +1203,9 @@ container.innerHTML+=`
 
 <div class="cart-item-info">
 
-<strong>${item.name}</strong>
+<h4>${item.name}</h4>
 
-<p>৳${item.price}</p>
+<p>৳${item.price.toLocaleString()}</p>
 
 <div class="qty">
 
@@ -671,7 +1217,8 @@ container.innerHTML+=`
 
 </div>
 
-<button class="remove" onclick="removeItem(${index})">
+<button class="remove"
+onclick="removeItem(${index})">
 Remove
 </button>
 
@@ -685,16 +1232,19 @@ Remove
 
 document.getElementById("cartCount").innerText=count;
 
-document.getElementById("cartTotal").innerText=total.toLocaleString();
+document.getElementById("cartTotal").innerText=
+total.toLocaleString();
 
 }
 
 
-/* CHANGE QUANTITY */
+/* =================================
+   QUANTITY
+================================= */
 
-function changeQty(index,change){
+function changeQty(index,value){
 
-cart[index].quantity+=change;
+cart[index].quantity+=value;
 
 if(cart[index].quantity<=0){
 
@@ -707,7 +1257,9 @@ updateCart();
 }
 
 
-/* REMOVE */
+/* =================================
+   REMOVE
+================================= */
 
 function removeItem(index){
 
@@ -718,27 +1270,40 @@ updateCart();
 }
 
 
-/* OPEN CART */
+/* =================================
+   OPEN CART
+================================= */
 
 function openCart(){
 
 document.getElementById("cart").classList.add("active");
 
+document.getElementById("cartOverlay")
+.classList.add("active");
+
 }
 
 
-/* CLOSE CART */
+/* =================================
+   CLOSE CART
+================================= */
 
 function closeCart(){
 
-document.getElementById("cart").classList.remove("active");
+document.getElementById("cart")
+.classList.remove("active");
+
+document.getElementById("cartOverlay")
+.classList.remove("active");
 
 }
 
 
-/* CHECKOUT */
+/* =================================
+   ORDER FORM
+================================= */
 
-function checkout(){
+function showOrderForm(){
 
 if(cart.length===0){
 
@@ -748,13 +1313,228 @@ return;
 
 }
 
-alert(
-"Order system is ready! Next step: আমরা এখানে Customer Name, Phone Number, Address এবং WhatsApp Order যোগ করব."
-);
+document.getElementById("orderForm")
+.classList.add("active");
+
+}
+
+
+/* =================================
+   PAYMENT
+================================= */
+
+function paymentChanged(){
+
+let method=document.querySelector(
+'input[name="payment"]:checked'
+).value;
+
+let info=document.getElementById("paymentInfo");
+
+if(method==="Rocket" || method==="Nagad"){
+
+info.classList.add("show");
+
+}else{
+
+info.classList.remove("show");
+
+}
+
+}
+
+
+/* =================================
+   WHATSAPP ORDER
+================================= */
+
+function sendWhatsAppOrder(){
+
+let name=
+document.getElementById("customerName").value.trim();
+
+let phone=
+document.getElementById("customerPhone").value.trim();
+
+let address=
+document.getElementById("customerAddress").value.trim();
+
+let payment=
+document.querySelector(
+'input[name="payment"]:checked'
+).value;
+
+
+if(name==="" || phone==="" || address===""){
+
+alert("Please fill in Name, Phone Number and Address.");
+
+return;
+
+}
+
+
+let message=
+"👑 *ROYALORA NEW ORDER*%0A%0A";
+
+message+=
+"👤 Customer: "+name+"%0A";
+
+message+=
+"📱 Phone: "+phone+"%0A";
+
+message+=
+"📍 Address: "+address+"%0A";
+
+message+=
+"💳 Payment: "+payment+"%0A%0A";
+
+message+=
+"🛍️ *ORDER ITEMS*%0A";
+
+
+let total=0;
+
+cart.forEach(item=>{
+
+let subtotal=item.price*item.quantity;
+
+total+=subtotal;
+
+message+=
+"• "+item.name+
+" × "+item.quantity+
+" = ৳"+subtotal+"%0A";
+
+});
+
+
+message+=
+"%0A💰 *TOTAL: ৳"+
+total+"*%0A%0A";
+
+message+=
+"Thank you for shopping with ROYALORA 👑";
+
+
+/*
+=================================
+CHANGE THIS NUMBER
+=================================
+
+Use your WhatsApp number with
+Bangladesh country code.
+
+Example:
+8801XXXXXXXXX
+
+Do NOT put + before 880.
+*/
+
+let whatsappNumber="8801334779360";
+
+
+let url=
+"https://wa.me/"+
+whatsappNumber+
+"?text="+message;
+
+
+window.open(url,"_blank");
+
+}
+
+
+/* =================================
+   SEARCH
+================================= */
+
+function searchProducts(){
+
+let search=
+document.getElementById("search")
+.value.toLowerCase();
+
+let products=
+document.querySelectorAll(".product");
+
+products.forEach(product=>{
+
+let name=
+product.dataset.name.toLowerCase();
+
+if(name.includes(search)){
+
+product.style.display="block";
+
+}else{
+
+product.style.display="none";
+
+}
+
+});
+
+}
+
+
+/* =================================
+   CATEGORY FILTER
+================================= */
+
+function filterProducts(category,button){
+
+document.querySelectorAll(".category")
+.forEach(btn=>btn.classList.remove("active"));
+
+button.classList.add("active");
+
+let products=
+document.querySelectorAll(".product");
+
+products.forEach(product=>{
+
+let productCategory=
+product.dataset.category;
+
+if(category==="All" ||
+productCategory.includes(category)){
+
+product.style.display="block";
+
+}else{
+
+product.style.display="none";
+
+}
+
+});
+
+}
+
+
+/* =================================
+   TOAST
+================================= */
+
+function showToast(text){
+
+let toast=
+document.getElementById("toast");
+
+toast.innerText=text;
+
+toast.classList.add("show");
+
+setTimeout(()=>{
+
+toast.classList.remove("show");
+
+},2000);
 
 }
 
 </script>
 
 </body>
-</html>
+    </html>
