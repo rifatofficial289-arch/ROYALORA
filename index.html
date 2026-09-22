@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROYALORA — Shop Smart • Live Royal</title>
+<meta name="description" content="ROYALORA premium online shopping store">
+<style>
+:root{--gold:#d9a72b;--gold2:#f4c95d;--dark:#090b0d;--card:#fff;--muted:#666}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f6f6f6;color:#111}
+a{text-decoration:none;color:inherit}.top{background:#080a0c;color:#fff;padding:9px 5%;font-size:13px;display:flex;justify-content:space-between}
+header{background:#0c1013;color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 10px #0004}
+.nav{max-width:1200px;margin:auto;display:flex;align-items:center;gap:25px;padding:15px 20px}.logo{font-size:27px;font-weight:800;color:var(--gold2);letter-spacing:2px;white-space:nowrap}.tag{display:block;font-size:9px;letter-spacing:2px;color:#ddd;text-align:center;margin-top:2px}
+.search{flex:1;display:flex;background:#fff;border-radius:30px;overflow:hidden;max-width:500px;margin:auto}.search input{flex:1;border:0;padding:13px 18px;outline:0}.search button{border:0;background:var(--gold2);width:55px;font-size:18px;cursor:pointer}
+.navlinks{display:flex;gap:17px;font-size:14px;align-items:center}.navlinks a:hover{color:var(--gold2)}.cartbtn{background:transparent;border:0;color:#fff;cursor:pointer;font-size:14px}
+.hero{min-height:390px;background:linear-gradient(90deg,#090909e8,#09090955),radial-gradient(circle at 75% 45%,#7d5425,#18120d 35%,#050607 75%);display:flex;align-items:center;color:#fff}.hero-inner{max-width:1200px;width:100%;margin:auto;padding:55px 30px}.eyebrow{letter-spacing:3px;color:#e5c276;font-size:14px}.hero h1{font-size:62px;margin:12px 0;color:#e6c36f;letter-spacing:5px}.hero h2{font-family:Georgia,serif;font-weight:400;font-style:italic;margin:0 0 20px}.hero p{max-width:480px;line-height:1.7;color:#ddd}.btn{display:inline-block;border:0;background:linear-gradient(135deg,var(--gold2),#d79518);padding:13px 23px;border-radius:28px;font-weight:700;cursor:pointer}
+.categories{max-width:1200px;margin:0 auto;padding:25px 20px;display:grid;grid-template-columns:repeat(8,1fr);gap:12px}.cat{background:#fff;border-radius:14px;padding:15px 8px;text-align:center;box-shadow:0 2px 8px #0000000b;font-size:13px;cursor:pointer}.cat span{font-size:28px;display:block;margin-bottom:8px}.section{max-width:1200px;margin:auto;padding:20px}.section-head{display:flex;justify-content:space-between;align-items:center}.section h2{font-size:28px}.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.product{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 3px 14px #0001;position:relative}.product img{width:100%;height:220px;object-fit:cover;background:#eee}.pbody{padding:14px}.badge{position:absolute;top:10px;left:10px;background:#e33;color:#fff;border-radius:5px;padding:5px 8px;font-size:12px}.product h3{margin:4px 0 7px;font-size:16px}.meta{color:#777;font-size:13px}.price{font-size:20px;font-weight:800;color:#b37a00;margin:9px 0}.old{text-decoration:line-through;color:#999;font-size:13px;margin-left:6px}.add{width:100%;background:#0c1013;color:#fff;border:0;padding:11px;border-radius:8px;cursor:pointer}.add:hover{background:#1b2329}.features{max-width:1200px;margin:25px auto;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0 20px}.feature{padding:20px;background:#111;color:#fff;border-radius:10px}.feature:nth-child(even){background:#ecd39b;color:#111}.offer{max-width:1200px;margin:25px auto;padding:35px 25px;border-radius:14px;background:linear-gradient(120deg,#111,#3b2b16);color:#fff;display:flex;justify-content:space-between;align-items:center}.offer h2{color:#f0c96b}.newsletter{background:#eee;padding:35px;text-align:center}.newsletter input{padding:13px;width:280px;border:1px solid #ccc;border-radius:8px}.newsletter button{padding:13px 20px;border:0;border-radius:8px;background:#111;color:#fff}
+footer{background:#090b0d;color:#ddd;padding:45px 6%;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}.flogo{color:#e6c36f;font-size:25px;font-weight:800}.copy{grid-column:1/-1;border-top:1px solid #333;padding-top:18px;font-size:13px}
+.overlay{display:none;position:fixed;inset:0;background:#0008;z-index:50}.drawer{position:absolute;right:0;top:0;height:100%;width:min(440px,95%);background:#fff;padding:22px;overflow:auto}.close{float:right;border:0;background:none;font-size:25px;cursor:pointer}.cartitem{display:flex;gap:12px;border-bottom:1px solid #ddd;padding:14px 0}.cartitem img{width:70px;height:70px;object-fit:cover;border-radius:8px}.qty button{border:1px solid #ccc;background:#fff;padding:4px 9px;cursor:pointer}.checkout{margin-top:18px}.checkout input,.checkout select{width:100%;padding:12px;margin:7px 0;border:1px solid #ccc;border-radius:7px}.checkout button{width:100%;padding:13px;border:0;border-radius:8px;background:#111;color:#fff;font-weight:700;cursor:pointer}
+.empty{text-align:center;padding:40px;color:#777}
+@media(max-width:900px){.nav{flex-wrap:wrap}.search{order:3;flex-basis:100%;max-width:none}.navlinks{display:none}.categories{grid-template-columns:repeat(4,1fr)}.products{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}footer{grid-template-columns:1fr 1fr}.hero h1{font-size:43px}}
+@media(max-width:560px){.top{font-size:10px}.hero{min-height:330px}.hero h1{font-size:35px}.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:1fr}.features{grid-template-columns:1fr}.offer{display:block}footer{grid-template-columns:1fr}.newsletter input{width:90%}}
+</style>
+</head>
+<body>
+<div class="top"><span>🚚 Free Delivery All Over Bangladesh</span><span>💵 Cash On Delivery Available</span><span>Follow Us: Facebook • Instagram • YouTube</span></div>
+<header><div class="nav">
+<div><div class="logo">♛ ROYALORA</div><div class="tag">SHOP SMART • LIVE ROYAL</div></div>
+<div class="search"><input id="search" placeholder="Search for products..." oninput="renderProducts()"><button onclick="renderProducts()">⌕</button></div>
+<div class="navlinks"><a href="#home">Home</a><a href="#products">Products</a><a href="#about">About</a><a href="#contact">Contact</a><button class="cartbtn" onclick="openCart()">🛒 Cart (<span id="count">0</span>)</button></div>
+</div></header>
+
+<section class="hero" id="home"><div class="hero-inner">
+<div class="eyebrow">PREMIUM QUALITY • TRENDY COLLECTION</div><h1>ROYALORA</h1><h2>Your Style • Your Priority</h2>
+<p>Discover the best products, latest trends and unbeatable deals — all in one place. Shop smart, live royal.</p>
+<button class="btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now →</button>
+</div></section>
+
+<div class="categories">
+<div class="cat" onclick="filterCat('Men')"><span>👕</span>Men's Fashion</div><div class="cat" onclick="filterCat('Women')"><span>👗</span>Women's Fashion</div>
+<div class="cat" onclick="filterCat('Electronics')"><span>📱</span>Electronics</div><div class="cat" onclick="filterCat('Accessories')"><span>🎧</span>Accessories</div>
+<div class="cat" onclick="filterCat('Home')"><span>🏠</span>Home & Living</div><div class="cat" onclick="filterCat('Beauty')"><span>💄</span>Beauty</div>
+<div class="cat" onclick="filterCat('Shoes')"><span>👟</span>Shoes</div><div class="cat" onclick="filterCat('Offers')"><span>🎁</span>Special Offers</div>
+</div>
+
+<section class="section" id="products"><div class="section-head"><h2>👑 Featured Products</h2><button class="btn" onclick="resetFilter()">View All →</button></div><div class="products" id="productGrid"></div></section>
+
+<div class="offer"><div><div class="eyebrow">LIMITED TIME OFFER</div><h2>Up to 25% OFF</h2><p>Selected products • Cash on Delivery available</p></div><button class="btn" onclick="filterCat('Offers')">Shop Offers</button></div>
+
+<div class="features"><div class="feature">🚚 <b>Fast & Free Delivery</b><br><small>All Over Bangladesh</small></div><div class="feature">💵 <b>Cash On Delivery</b><br><small>Pay When You Receive</small></div><div class="feature">🛡️ <b>100% Genuine Products</b><br><small>Quality You Can Trust</small></div><div class="feature">🎧 <b>24/7 Customer Support</b><br><small>We're Always Here</small></div></div>
+
+<div class="newsletter"><h2>Join ROYALORA</h2><p>Get new arrivals and special offers in your inbox.</p><input placeholder="Your email"><button>Subscribe</button></div>
+
+<footer id="about"><div><div class="flogo">♛ ROYALORA</div><p>Your one-stop online shopping destination. Trendy products, great deals and a royal shopping experience.</p></div>
+<div><h3>Quick Links</h3><p>Home<br>All Products<br>Men<br>Women<br>Electronics<br>Accessories</p></div>
+<div><h3>Customer Service</h3><p>FAQ<br>Shipping Policy<br>Return & Refund<br>Privacy Policy<br>Terms & Conditions</p></div>
+<div id="contact"><h3>Contact Us</h3><p>📞 +880 17XX-XXXXXX<br>✉️ royalora@gmail.com<br>📍 Narayanganj, Bangladesh</p></div>
+<div class="copy">© 2026 ROYALORA. All Rights Reserved.</div></footer>
+
+<div class="overlay" id="overlay"><div class="drawer"><button class="close" onclick="closeCart()">×</button><h2>🛒 Your Cart</h2><div id="cartItems"></div><div id="cartTotal"></div>
+<div class="checkout"><h3>Checkout</h3><input id="name" placeholder="Full Name"><input id="phone" placeholder="Phone Number"><input id="address" placeholder="Delivery Address"><select id="payment"><option>Cash on Delivery</option><option>bKash (Manual)</option><option>Nagad (Manual)</option></select><button onclick="placeOrder()">Place Order</button></div></div></div>
+
+<script>
+const products=[
+{id:1,name:"Nike Air Force 1",cat:"Shoes",price:4800,old:6999,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700",offer:true},
+{id:2,name:"Hoodie Jacket",cat:"Men",price:1690,old:1990,img:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=700",offer:true},
+{id:3,name:"iPhone 15",cat:"Electronics",price:89999,old:0,img:"https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=700",offer:false},
+{id:4,name:"Smart Watch T900",cat:"Electronics",price:2199,old:2999,img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700",offer:true},
+{id:5,name:"Ladies Hand Bag",cat:"Women",price:1950,old:2390,img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=700",offer:true},
+{id:6,name:"Premium Sunglasses",cat:"Accessories",price:750,old:999,img:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=700",offer:true},
+{id:7,name:"Wireless Headphones",cat:"Accessories",price:1890,old:2490,img:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700",offer:true},
+{id:8,name:"Classic Men's Shirt",cat:"Men",price:1250,old:1590,img:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=700",offer:true}
+];
+let cart=JSON.parse(localStorage.getItem("royaloraCart")||"[]"), currentCat="";
+function money(n){return "৳ "+n.toLocaleString("en-BD")}
+function renderProducts(){
+ const q=document.getElementById("search").value.toLowerCase();
+ let list=products.filter(p=>(!currentCat||p.cat===currentCat||currentCat==="Offers"&&p.offer)&&p.name.toLowerCase().includes(q));
+ document.getElementById("productGrid").innerHTML=list.map(p=>`<div class="product">${p.offer?'<span class="badge">SALE</span>':''}<img src="${p.img}" alt="${p.name}" onerror="this.style.opacity=.2"><div class="pbody"><div class="meta">${p.cat}</div><h3>${p.name}</h3><div class="price">${money(p.price)} ${p.old?`<span class="old">${money(p.old)}</span>`:""}</div><div class="meta">⭐ 4.8 • Genuine Product</div><br><button class="add" onclick="addCart(${p.id})">🛒 Add to Cart</button></div></div>`).join("")||'<div class="empty">No products found.</div>';
+}
+function filterCat(c){currentCat=c;document.getElementById("products").scrollIntoView({behavior:"smooth"});renderProducts()}
+function resetFilter(){currentCat="";document.getElementById("search").value="";renderProducts()}
+function addCart(id){const p=products.find(x=>x.id===id),x=cart.find(x=>x.id===id);if(x)x.qty++;else cart.push({...p,qty:1});save();openCart()}
+function save(){localStorage.setItem("royaloraCart",JSON.stringify(cart));document.getElementById("count").textContent=cart.reduce((s,x)=>s+x.qty,0);renderCart()}
+function renderCart(){
+ const el=document.getElementById("cartItems");
+ if(!cart.length){el.innerHTML='<div class="empty">Your cart is empty.</div>';document.getElementById("cartTotal").innerHTML="";return}
+ el.innerHTML=cart.map(x=>`<div class="cartitem"><img src="${x.img}"><div style="flex:1"><b>${x.name}</b><br>${money(x.price)}<div class="qty"><button onclick="changeQty(${x.id},-1)">−</button> ${x.qty} <button onclick="changeQty(${x.id},1)">+</button> <button onclick="removeItem(${x.id})">🗑️</button></div></div></div>`).join("");
+ const total=cart.reduce((s,x)=>s+x.price*x.qty,0);document.getElementById("cartTotal").innerHTML=`<h3>Total: ${money(total)}</h3>`;
+}
+function changeQty(id,d){let x=cart.find(x=>x.id===id);x.qty+=d;if(x.qty<=0)cart=cart.filter(x=>x.id!==id);save()}
+function removeItem(id){cart=cart.filter(x=>x.id!==id);save()}
+function openCart(){document.getElementById("overlay").style.display="block";renderCart()}
+function closeCart(){document.getElementById("overlay").style.display="none"}
+function placeOrder(){
+ if(!cart.length)return alert("Your cart is empty.");
+ const n=document.getElementById("name").value.trim(),ph=document.getElementById("phone").value.trim(),a=document.getElementById("address").value.trim();
+ if(!n||!ph||!a)return alert("Please fill in your name, phone and address.");
+ const order="ROYAL-"+Date.now().toString().slice(-6);
+ alert("Order placed successfully!\\nOrder ID: "+order+"\\nPayment: "+document.getElementById("payment").value);
+ cart=[];save();closeCart();
+}
+save();renderProducts();
+</script>
+</body>
+</html>
